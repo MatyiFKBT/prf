@@ -12,11 +12,11 @@ import { userInfo } from "os";
 dotenv.config();
 seed();
 
-const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/kndqji-beadando";
+const MONGO_URL = process.env.MONGO_URL || "mongodb://localhost:27017/kndqji-beadando";
 const port = process.env.PORT || 3000;
 
 const app: Express = express();
-mongoose.connect(MONGO_URI);
+mongoose.connect(MONGO_URL);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => console.log('[db]: Connected to database'));
@@ -55,9 +55,9 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use('/api/users', userRouter)
-app.get('/', (req: Request, res: Response) => {
-  res.send('Express + TypeScript Server');
-});
+app.use('/',
+  express.static('public')
+)
 
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
