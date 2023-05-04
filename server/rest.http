@@ -1,0 +1,17 @@
+@apiurl = http://localhost:3001/api/users
+
+post {{apiurl}}/login
+content-type: application/json
+
+{
+	"username":"admin",
+	"password":"matyi"
+}
+
+###
+
+post {{apiurl}}/logout
+
+###
+
+get {{apiurl}}/me
