@@ -1,4 +1,5 @@
 @apiurl = http://localhost:3001/api/users
+@apiurl = https://prf-production.up.railway.app/api/users
 
 post {{apiurl}}/login
 content-type: application/json
