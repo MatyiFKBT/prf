@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
 		required: true,
 		default: "user"
 	},
+	songs: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Song',
+	}]
 }, {
 	timestamps: true,
 })

@@ -8,6 +8,7 @@ import expressSession from "express-session";
 import { Strategy as localStrategy } from 'passport-local'
 import { User } from "./db/User";
 import userRouter from "./routes/user.router";
+import songRouter from "./routes/song.router";
 import { userInfo } from "os";
 dotenv.config();
 seed();
@@ -54,7 +55,16 @@ app.use(expressSession({
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use((req: Request, res: Response, next) => {
+  console.log({
+    method: req.method,
+    url: req.url,
+    user: req.user,
+  })
+  next()
+})
 app.use('/api/users', userRouter)
+app.use('/api/songs', songRouter)
 app.use('/',
   express.static('public')
 )

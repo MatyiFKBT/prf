@@ -2,9 +2,23 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+
+  <nav>
+    <ul>
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/songs">Songs</a></li>
+    </ul>
+  </nav>
+<router-outlet></router-outlet>
+  `,
+  styles: [`
+  main {
+    margin: 20px;
+  }
+  h1 { color: purple }
+  `]
 })
 export class AppComponent {
-  title = 'client';
+  title = 'Habit Tracker';
 }

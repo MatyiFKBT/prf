@@ -1,6 +1,7 @@
-@apiurl = http://localhost:3001/api/users
+@apiurl = http://localhost:3001/api
+# @apiurl = https://prf-production.up.railway.app/api/users
 
-post {{apiurl}}/login
+post {{apiurl}}/users/login
 content-type: application/json
 
 {
@@ -10,8 +11,13 @@ content-type: application/json
 
 ###
 
-post {{apiurl}}/logout
+post {{apiurl}}/users/logout
 
 ###
 
-get {{apiurl}}/me
+get {{apiurl}}/users/me
+
+
+### SONGS
+
+get {{apiurl}}/songs/all
