@@ -8,7 +8,8 @@
       "schematics": {
         "@schematics/angular:component": {
           "inlineStyle": true,
-          "inlineTemplate": true
+          "inlineTemplate": true,
+          "skipTests": true
         }
       },
       "root": "",
@@ -64,6 +65,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "client:build:production"
