@@ -29,7 +29,7 @@ export class CommentFormComponent {
     if(comment.text === null || comment.text === undefined || comment.text === '') {
       return;
     }
-    this.songService.addComment(this.songId, comment.text).subscribe(); // todo create this method
+    this.songService.addComment(this.songId, comment.text).subscribe();
     this.commentForm.reset();
   }
 
