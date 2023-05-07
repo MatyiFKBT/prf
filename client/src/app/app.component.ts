@@ -7,10 +7,12 @@ import { Router } from '@angular/router';
   template: `
 
  <app-nav> </app-nav>
-<router-outlet></router-outlet>
+ <main>
+   <router-outlet></router-outlet>
+  </main>
   `,
   styles: [`
-  h1 { color: purple }
+  h1 { color: red }
   `]
 })
 export class AppComponent {

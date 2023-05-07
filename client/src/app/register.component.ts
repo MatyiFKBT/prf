@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
 
   username: string;
   password: string;
-  retUrl: string = "songs";
+  retUrl = "songs";
 
   constructor(
     private router: Router,

@@ -13,6 +13,7 @@ export class UserService {
   public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public getUserData: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
   constructor(private http: HttpClient, private router: Router) {
+    console.log('user.service.ts: constructor()');
     this.http.get<AuthResponse>('/api/users/me').subscribe((response) => {
       this.isLoggedIn.next(true);
       this.getUserData.next(response.user!);
@@ -27,7 +28,7 @@ export class UserService {
       if (response.message == "Login successful") {
         this.isLoggedIn.next(true);
         this.getUserData.next(response.user!);
-        this.router.navigate(['songs']);
+        // this.router.navigate(['songs']);
       }
     });
     // console.log('user.service.ts: login()', response);

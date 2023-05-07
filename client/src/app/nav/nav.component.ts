@@ -45,6 +45,7 @@ import { User } from '../user';
     nav {
       background-color: #333;
       overflow: hidden;
+      color: white;
     }
     ul {
       list-style-type: none;
@@ -75,7 +76,7 @@ export class NavComponent implements OnInit {
   constructor(public userService: UserService,
     private router: Router) {
   }
-  isLoggedin: boolean = false;
+  isLoggedin = false;
   user: User | null = null;
   loginSubscription: Subscription;
   userSubscription: Subscription;

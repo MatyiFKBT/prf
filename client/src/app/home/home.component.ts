@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-home',
   template: `
-  <main>
-
     <h1>Home</h1>
     <p> Welcome to the Song-Lister App! </p>
 
@@ -55,11 +53,8 @@ import { Component } from '@angular/core';
     <small>
       The source code is available on <a href="https://github.com/matyifkbt/prf/">GitHub</a>.
     </small>
-
-  </main>
   `,
   styles: [
-    'h1 { color: red; }'
   ]
 })
 export class HomeComponent {

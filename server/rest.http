@@ -30,3 +30,6 @@ get {{apiurl}}/users/me
 ### SONGS
 
 get {{apiurl}}/songs/all
+###
+
+get {{apiurl}}/songs/my

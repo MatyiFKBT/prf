@@ -8,12 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
-import { SongDetailComponent, SongFormComponent, SongItemComponent, SongListComponent } from './song/index';
+import { SongDetailComponent, SongFormComponent, SongItemComponent, SongListComponent,MySongsComponent } from './song/index';
 import { LoginComponent } from './login.component';
 import { UserService } from './user.service';
 import { SongService } from './song.service';
 import { NavComponent } from './nav/nav.component';
 import { RegisterComponent } from './register.component';
+import { CheckingAuthComponent } from './checking-auth-component/checking-auth-component.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,9 @@ import { RegisterComponent } from './register.component';
     SongItemComponent,
     LoginComponent,
     NavComponent,
-    RegisterComponent
+    RegisterComponent,
+    CheckingAuthComponent,
+    MySongsComponent
   ],
   imports: [
     BrowserModule,

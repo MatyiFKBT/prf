@@ -5,5 +5,6 @@ export interface Song {
   _id: string;
   user: {
     username: string;
-  }
+  },
+  likes: number;
 }

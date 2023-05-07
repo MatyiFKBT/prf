@@ -15,7 +15,5 @@ import { Song } from '../song';
 })
 export class SongItemComponent {
   @Input() song: Song;
-  constructor() { }
-
 
 }

@@ -36,7 +36,7 @@ passport.use('local', new localStrategy(async (username, password, done) => {
   if(!verified){
     return done(null, false, { message: 'Incorrect password.' })
   }
-  return done(null, { username, role: user.role})
+  return done(null, { username, role: user.role, _id: user._id})
 }))
 
 passport.serializeUser((user, done) => {
