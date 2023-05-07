@@ -47,7 +47,7 @@ router.get('/all', (req, res) => {
 
 router.get('/my', isAuthenticated, (req, res) => {
 	console.log('[song.router.ts]: GET /my')
-	Song.find({ user: req.user! }).populate('user', 'username')
+	Song.find({ user: req.user! }).populate('user', 'username').populate('comments')
 		.then(songs => {
 			return res.json(songs);
 		})
@@ -59,13 +59,14 @@ router.get('/my', isAuthenticated, (req, res) => {
 router.get('/:id', (req, res) => {
 	console.log('[song.router.ts]: GET /:id')
 	const { id } = req.params;
-	Song.findById(id).populate('user', 'username')
+	Song.findById(id).populate('user', 'username').populate('comments')
 		.then(song => {
 			if (!song) {
 				return res.status(404).json({ error: 'Song not found' });
 			}
 			return res.json(song);
 		}).catch(err => {
+			console.log({err})
 			return res.status(500).json({ error: err });
 		})
 })

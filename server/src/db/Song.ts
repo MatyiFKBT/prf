@@ -22,6 +22,10 @@ const songSchema = new mongoose.Schema({
 		type: Number,
 		default: 0,
 	},
+	comments: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Comment',
+	}]
 }, {
 	timestamps: true,
 })

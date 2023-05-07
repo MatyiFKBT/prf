@@ -15,6 +15,10 @@ import { SongService } from './song.service';
 import { NavComponent } from './nav/nav.component';
 import { RegisterComponent } from './register.component';
 import { CheckingAuthComponent } from './checking-auth-component/checking-auth-component.component';
+import { CommentListComponent } from './song/comment/comment-list.component';
+import { CommentItemComponent } from './song/comment/comment-item.component';
+import { AddCommentComponent } from './song/comment/add-comment.component';
+import { CommentFormComponent } from './song/comment/comment-form.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,11 @@ import { CheckingAuthComponent } from './checking-auth-component/checking-auth-c
     NavComponent,
     RegisterComponent,
     CheckingAuthComponent,
-    MySongsComponent
+    MySongsComponent,
+    CommentListComponent,
+    CommentItemComponent,
+    AddCommentComponent,
+    CommentFormComponent
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,8 @@ import { SongService } from '../song.service';
         <span *ngIf="song.likes > 0">({{song.likes}})</span>
       </button>
       <button (click)="songService.deleteSong(song._id).subscribe()">Delete</button>
+      <app-comment-list [comments]="song.comments"></app-comment-list>
+      <app-comment-form [songId]="song._id"></app-comment-form>
     </div>
     <ng-template #loading> Loading song...</ng-template>
   `,

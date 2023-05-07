@@ -1,5 +1,7 @@
 import { User } from "./User";
 import { Song } from "./Song";
+import { Comment} from "./Comment";
+
 export async function seed() {
 	try {
 		const admin = await User.findOne({ username: 'admin' });
@@ -14,6 +16,7 @@ export async function seed() {
 		}
 		await User.findOneAndDelete({ username: 'admin2' });
 		// check if there are any songs in the database
+		await Song.deleteMany({});
 		const songs = await Song.find({
 			user: admin?._id
 		})
@@ -27,6 +30,14 @@ export async function seed() {
 			});
 			await newSong.save();
 			console.log('[db]: Song created');
+			const newComment = new Comment({
+				text: "yooooo",
+				user: admin?._id,
+				song: newSong?._id
+			});
+			await newComment.save();
+			console.log('[db]: Comment added');
+
 		}
 	} catch (err) {
 		console.log(`Error seeding database: ${err}`);
