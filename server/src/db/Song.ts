@@ -36,6 +36,7 @@ interface ISong extends mongoose.Document {
 	link: string;
 	user: string;
 	likes: number;
+	comments: any[];
 }
 
 type SongModel = mongoose.Model<ISong, {}, {}>;

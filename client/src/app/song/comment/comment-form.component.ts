@@ -1,11 +1,16 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { SongService } from 'src/app/song.service';
 
 @Component({
   selector: 'app-comment-form',
   template: `
-    <p>
-      comment-form works!
-    </p>
+    <h3> Add a comment </h3>
+    <form [formGroup]="commentForm" (ngSubmit)="onSubmit(commentForm.value)">
+      <input type="text" placeholder="Comment..." formControlName="text" />
+      <button type="submit">Add</button>
+    </form>
+
   `,
   styles: [
   ]
@@ -19,8 +24,12 @@ export class CommentFormComponent {
       text: ''
     });
   }
-  onSubmit(comment: Comment) {
-    this.songService.addComment(this.songId, comment).subscribe(); // todo create this method
+  onSubmit(comment: { text?: string | null }) {
+    console.log('comment-form.component.ts: onSubmit()', { comment });
+    if(comment.text === null || comment.text === undefined || comment.text === '') {
+      return;
+    }
+    this.songService.addComment(this.songId, comment.text).subscribe(); // todo create this method
     this.commentForm.reset();
   }
 

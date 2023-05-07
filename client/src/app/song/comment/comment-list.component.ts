@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Comment } from '../../comment';
 
 @Component({
@@ -15,6 +15,6 @@ import { Comment } from '../../comment';
   ]
 })
 export class CommentListComponent {
-  comments: Comment[];
+  @Input() comments: Comment[];
 
 }

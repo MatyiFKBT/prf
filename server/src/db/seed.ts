@@ -1,26 +1,30 @@
 import { User } from "./User";
 import { Song } from "./Song";
-import { Comment} from "./Comment";
+import { Comment } from "./Comment";
+
+const users = [
+	{ username: 'admin', password: 'matyi', role: 'admin' },
+	{ username: 'felhasznalo', password: 'jelszo', role: 'user' },
+	{ username: 'masikFelhasznalo', password: 'masikJelszo', role: 'user' }
+]
 
 export async function seed() {
 	try {
 		const admin = await User.findOne({ username: 'admin' });
 		if (!admin) {
-			const newAdmin = new User({
-				username: 'admin',
-				password: 'matyi',
-				role: 'admin'
-			});
-			await newAdmin.save();
+			const promises = users.map((user) => {
+				const newUser = new User(user);
+				return newUser.save();
+			})
+			const [admin,user1,user2] = await Promise.all(promises);
 			console.log('[db]: Admin user created');
 		}
-		await User.findOneAndDelete({ username: 'admin2' });
 		// check if there are any songs in the database
 		await Song.deleteMany({});
 		const songs = await Song.find({
 			user: admin?._id
 		})
-		if (songs.length ===0) {
+		if (songs.length === 0) {
 			// create a song
 			const newSong = new Song({
 				title: 'Never Gonna Give You Up',

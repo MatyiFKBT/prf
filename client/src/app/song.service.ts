@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class SongService {
   private refetchSubject = new BehaviorSubject(null);
-  constructor(private http: HttpClient,private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   get refetch() {
     return this.refetchSubject.asObservable();
@@ -42,6 +42,12 @@ export class SongService {
   deleteSong(id: string) {
     return this.http.delete(`/api/songs/${id}`).pipe(
       tap(() => this.router.navigate(['/songs']))
+    )
+  }
+
+  addComment(songId: string, comment: string) {
+    return this.http.post(`/api/songs/${songId}/comment`, { text: comment }).pipe(
+      tap(() => this.refetchSubject.next(null))
     )
   }
 }
