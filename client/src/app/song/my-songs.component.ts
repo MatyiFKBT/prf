@@ -4,32 +4,29 @@ import { Song } from '../song';
 import { SongService } from '../song.service';
 
 @Component({
-  selector: 'app-song-list',
+  selector: 'app-my-songs',
   template: `
-    <h2>Song List</h2>
-    <!-- <app-song-form (addSong)="onAddSong($event)"></app-song-form> -->
+    <h2>My Songs</h2>
     <ul>
       <app-song-item
         *ngFor="let song of songs | async"
         [song]="song"
-      ></app-song-item>
+      >
+
+      </app-song-item>
     </ul>
   `,
   styles: [
   ]
 })
-export class SongListComponent implements OnInit {
+export class MySongsComponent implements OnInit {
   songs: Observable<Song[]>;
 
   constructor(private songService: SongService) { }
 
   ngOnInit(): void {
     this.songs = this.songService.refetch.pipe(
-      switchMap(() => this.songService.getSongs())
+      switchMap(() => this.songService.getMySongs())
     )
   }
-
-  // onAddSong(song: Song) {
-  //   this.songService.addSong(song).subscribe();
-  // }
 }

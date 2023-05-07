@@ -2,19 +2,24 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 import { Song } from './song';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SongService {
   private refetchSubject = new BehaviorSubject(null);
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private router: Router) { }
 
   get refetch() {
     return this.refetchSubject.asObservable();
   }
   getSongs(): Observable<Song[]> {
     return this.http.get<Song[]>('/api/songs/all');
+  }
+
+  getMySongs(): Observable<Song[]> {
+    return this.http.get<Song[]>('/api/songs/my');
   }
 
   addSong(song: Song) {
@@ -26,5 +31,17 @@ export class SongService {
 
   getSong(id: string): Observable<Song> {
     return this.http.get<Song>(`/api/songs/${id}`);
+  }
+
+  likeSong(id: string) {
+    return this.http.put(`/api/songs/${id}/like`, null).pipe(
+      tap(() => this.refetchSubject.next(null))
+    )
+  }
+
+  deleteSong(id: string) {
+    return this.http.delete(`/api/songs/${id}`).pipe(
+      tap(() => this.router.navigate(['/songs']))
+    )
   }
 }

@@ -17,7 +17,11 @@ const songSchema = new mongoose.Schema({
 	user: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User',
-	}
+	},
+	likes: {
+		type: Number,
+		default: 0,
+	},
 }, {
 	timestamps: true,
 })
@@ -27,6 +31,7 @@ interface ISong extends mongoose.Document {
 	artist: string;
 	link: string;
 	user: string;
+	likes: number;
 }
 
 type SongModel = mongoose.Model<ISong, {}, {}>;
