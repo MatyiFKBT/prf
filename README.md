@@ -5,14 +5,15 @@ Az alkalmazás a következő címen érhető el: https://prf-production.up.railw
 Lokális futtatáshoz a következő parancsokat kell kiadni:
 
 ```bash
-cd server
+cd client
 npm install
 npm run build
-npm run start
 ```
 
+A kliens a `server/public` mappájába fog build-elődni.
+
 ```bash
-cd client
+cd server
 npm install
 npm run build
 npm run start
