@@ -2,6 +2,13 @@
 
 Az alkalmazás a következő címen érhető el: https://prf-production.up.railway.app/home
 
+Előre feltöltött felhasználók:
+| felhasználónév | jelszó |
+| -------------- | ------ |
+| admin | matyi |
+| felhasznalo | jelszo |
+| masikFelhasznalo|masikJelszo |
+
 Lokális futtatáshoz a következő parancsokat kell kiadni:
 
 ```bash
