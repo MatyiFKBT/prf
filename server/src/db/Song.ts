@@ -22,6 +22,10 @@ const songSchema = new mongoose.Schema({
 		type: Number,
 		default: 0,
 	},
+	comments: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Comment',
+	}]
 }, {
 	timestamps: true,
 })
@@ -32,6 +36,7 @@ interface ISong extends mongoose.Document {
 	link: string;
 	user: string;
 	likes: number;
+	comments: any[];
 }
 
 type SongModel = mongoose.Model<ISong, {}, {}>;

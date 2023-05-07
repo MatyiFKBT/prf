@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
 	songs: [{
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Song',
+	}],
+	comments: [{
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Comment',
 	}]
 }, {
 	timestamps: true,

@@ -1,3 +1,5 @@
+import { Comment } from "./comment";
+
 export interface Song {
   title: string;
   artist: string;
@@ -7,4 +9,5 @@ export interface Song {
     username: string;
   },
   likes: number;
+  comments: Comment[];
 }

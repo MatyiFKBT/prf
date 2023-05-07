@@ -7,14 +7,17 @@ import { SongService } from '../song.service';
   selector: 'app-song-detail',
   template: `
     <h2>Song Detail</h2>
-    <p> Song id: {{id}}</p>
     <!-- display the fetched son -->
     <div *ngIf="song | async as song; else loading">
-      <p> {{song.user.username}} - {{song.title}}</p>
+      <p> {{song.artist}} - {{song.title}}</p>
+      <a [href]="song.link" target="_blank">Listen</a>
+      <br>
       <button (click)="songService.likeSong(song._id).subscribe()">Like
         <span *ngIf="song.likes > 0">({{song.likes}})</span>
       </button>
       <button (click)="songService.deleteSong(song._id).subscribe()">Delete</button>
+      <app-comment-list [comments]="song.comments"></app-comment-list>
+      <app-comment-form [songId]="song._id"></app-comment-form>
     </div>
     <ng-template #loading> Loading song...</ng-template>
   `,
