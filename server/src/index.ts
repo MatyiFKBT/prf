@@ -33,18 +33,18 @@ passport.use('local', new localStrategy(async (username, password, done) => {
     return done(null, false, { message: 'Incorrect username.' })
   }
   const verified = await user.comparePassword(password);
-  if(!verified){
+  if (!verified) {
     return done(null, false, { message: 'Incorrect password.' })
   }
-  return done(null, { username, role: user.role, _id: user._id})
+  return done(null, { username, role: user.role, _id: user._id })
 }))
 
 passport.serializeUser((user, done) => {
-  if(!user) return done('No user', null)
+  if (!user) return done('No user', null)
   done(null, user)
 })
 passport.deserializeUser((user, done) => {
-  if(!user) return done('No user', null)
+  if (!user) return done('No user', null)
   done(null, user)
 })
 
@@ -67,6 +67,9 @@ app.use('/api/users', userRouter)
 app.use('/api/songs', songRouter)
 app.use('/',
   express.static('public')
+)
+app.use('', (req, res) =>
+  res.redirect(301, '/')
 )
 
 app.listen(port, () => {
