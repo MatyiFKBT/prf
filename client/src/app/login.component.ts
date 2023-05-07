@@ -63,7 +63,4 @@ export class LoginComponent implements OnInit {
     */
   }
 
-  // todo redirect to retUrl if auth successful /get/me
-
-
 }
