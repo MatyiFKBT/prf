@@ -56,4 +56,4 @@ router.put('/:id', isAuthenticated, (req, res) => {
                 .catch(err => { return res.status(500).json({ error: err }) })
         })
         .catch(err => { return res.status(500).json({ error: err }) })
-}
+})
