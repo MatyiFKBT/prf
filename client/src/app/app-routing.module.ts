@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { SongListComponent,SongDetailComponent } from './song/index';
+import { SongListComponent, SongDetailComponent, SongFormComponent } from './song/index';
+import { AuthGuard } from './auth.guard';
+import { LoginComponent } from './login.component';
+import { RegisterComponent } from './register.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent},
+  { path: 'home', component: HomeComponent },
   { path: 'songs', component: SongListComponent },
-  { path: 'songs/:id', component: SongDetailComponent },
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
+  { path: 'songs/new', component: SongFormComponent, canActivate: [AuthGuard] },
+  { path: 'songs/:id', component: SongDetailComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

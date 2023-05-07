@@ -1,3 +1,4 @@
+import { User } from "../db/User";
 import { NextFunction, Request, Response, Router } from "express";
 import passport from "passport";
 import { z } from 'zod';
@@ -40,27 +41,52 @@ router.post('/login', validateLogin, (req, res) => {
 			if (err) {
 				return res.status(500).json({ error: err });
 			}
-			return res.json({ message: 'Login successful' });
+			return res.json({ message: 'Login successful', user });
+		});
+	})(req, res)
+})
+
+router.post('/register', validateLogin, async (req, res) => {
+	console.log('[user.router.ts]: POST /register')
+	// check if username already exists
+	const existing = await User.findOne({ username: req.body.username });
+	if (existing) {
+		return res.status(400).json({ error: 'Username already exists' });
+	}
+	// create new user
+	const newUser = new User({
+		username: req.body.username,
+		password: req.body.password,
+	});
+	// save user to database
+	await newUser.save();
+	passport.authenticate('local', (err: any, user: Express.User, info: any) => {
+		// login user
+		req.login(user, (err) => {
+			if (err) {
+				return res.status(500).json({ error: err });
+			}
+			return res.json({ message: 'Register successful', user });
 		});
 	})(req, res)
 })
 
 router.post('/logout', (req, res) => {
-	if(req.isAuthenticated()){
-		req.logout((err)=>{
-			if(err) return res.status(500).json({error: err});
-			return res.json({message: 'Logout successful'});
+	if (req.isAuthenticated()) {
+		req.logout((err) => {
+			if (err) return res.status(500).json({ error: err });
+			return res.json({ message: 'Logout successful' });
 		});
 	} else {
-		return res.status(400).json({error: 'Not logged in'});
+		return res.status(400).json({ error: 'Not logged in' });
 	}
 })
 
 router.get('/me', (req, res) => {
-	if(req.isAuthenticated()){
-		return res.json({user: req.user});
+	if (req.isAuthenticated()) {
+		return res.json({ user: req.user });
 	}
-	return res.status(400).json({error: 'Not logged in'});
+	return res.status(400).json({ error: 'Not logged in' });
 })
 
 export default router;

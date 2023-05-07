@@ -10,6 +10,15 @@ content-type: application/json
 }
 
 ###
+post {{apiurl}}/users/register
+content-type: application/json
+
+{
+	"username":"admin2",
+	"password":"matyi"
+}
+
+###
 
 post {{apiurl}}/users/logout
 

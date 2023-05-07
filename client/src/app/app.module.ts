@@ -1,38 +1,42 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { AuthGuard } from './auth.guard';
 import { HomeComponent } from './home/home.component';
-import { HabitListComponent } from './habit-list/habit-list.component';
-import { HabitItemComponent } from './habit-item/habit-item.component';
-import { HabitFormComponent } from './habit-form/habit-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { SongDetailComponent, SongFormComponent,SongItemComponent,SongListComponent } from './song/index';
+import { SongDetailComponent, SongFormComponent, SongItemComponent, SongListComponent } from './song/index';
+import { LoginComponent } from './login.component';
+import { UserService } from './user.service';
+import { SongService } from './song.service';
+import { NavComponent } from './nav/nav.component';
+import { RegisterComponent } from './register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    HabitListComponent,
-    HabitItemComponent,
-    HabitFormComponent,
     SongDetailComponent,
     SongFormComponent,
     SongListComponent,
-    SongItemComponent
+    SongItemComponent,
+    LoginComponent,
+    NavComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     HttpClientModule,
     MatSlideToggleModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard, UserService, SongService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

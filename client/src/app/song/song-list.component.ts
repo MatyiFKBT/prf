@@ -7,7 +7,7 @@ import { SongService } from '../song.service';
   selector: 'app-song-list',
   template: `
     <h2>Song List</h2>
-    <app-song-form (addSong)="onAddSong($event)"></app-song-form>
+    <!-- <app-song-form (addSong)="onAddSong($event)"></app-song-form> -->
     <ul>
       <app-song-item
         *ngFor="let song of songs | async"
@@ -29,7 +29,7 @@ export class SongListComponent implements OnInit {
     )
   }
 
-  onAddSong(song: Song) {
-    this.songService.addSong(song).subscribe();
-  }
+  // onAddSong(song: Song) {
+  //   this.songService.addSong(song).subscribe();
+  // }
 }

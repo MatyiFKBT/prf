@@ -12,6 +12,7 @@ export async function seed() {
 			await newAdmin.save();
 			console.log('[db]: Admin user created');
 		}
+		await User.findOneAndDelete({ username: 'admin2' });
 		// check if there are any songs in the database
 		const songs = await Song.find({
 			user: admin?._id

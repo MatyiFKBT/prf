@@ -1,24 +1,23 @@
 import { Component } from '@angular/core';
+import { UserService } from './user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   template: `
 
-  <nav>
-    <ul>
-      <li><a routerLink="/">Home</a></li>
-      <li><a routerLink="/songs">Songs</a></li>
-    </ul>
-  </nav>
+ <app-nav> </app-nav>
 <router-outlet></router-outlet>
   `,
   styles: [`
-  main {
-    margin: 20px;
-  }
   h1 { color: purple }
   `]
 })
 export class AppComponent {
   title = 'Habit Tracker';
+
+  constructor(private userService: UserService,
+    private router: Router) {
+  }
+
 }
