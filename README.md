@@ -1,8 +1,10 @@
 # PRF Beadandó projekt
 
-> Matolcsy Mátyás (KNDQJI)
+> Projekt neve: Song-Lister App
+>
+> Az alkalmazás a következő címen érhető el a szorgalmi időszakban: <https://prf-production.up.railway.app/>
 
-Az alkalmazás a következő címen érhető el: https://prf-production.up.railway.app/home
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/t6Rwbm?referralCode=xNLBXG)
 
 Előre feltöltött felhasználók:
 | felhasználónév | jelszó |
