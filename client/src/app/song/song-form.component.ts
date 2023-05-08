@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Song } from '../song';
 import { SongService } from '../song.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-song-form',
@@ -12,7 +13,7 @@ import { SongService } from '../song.service';
       <input type="text" placeholder="Artist..." formControlName="artist" />
       <input type="url" placeholder="Link..." formControlName="link" />
 
-      <button type="submit">Add</button>
+      <button class="btn" type="submit">Add</button>
     </form>
   `,
   styles: [
@@ -31,7 +32,9 @@ export class SongFormComponent {
 
   @Output() addSong = new EventEmitter<any>();
   constructor(private formBuilder: FormBuilder,
-    private songService: SongService) {
+    private songService: SongService,
+    private router: Router
+  ) {
 
     this.songForm = this.formBuilder.group({
       title: '',
@@ -41,7 +44,11 @@ export class SongFormComponent {
   }
 
   onSubmit(song: Song) {
-    this.songService.addSong(song).subscribe();
+    this.songService.addSong(song).subscribe(
+      (song: Song) => {
+        this.router.navigate(['/songs/' + song._id]);
+      }
+    );
     this.songForm.reset();
   }
 }

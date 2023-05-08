@@ -7,9 +7,9 @@ import { Comment } from "../db/Comment";
 const router = Router();
 
 const newSongSchema = z.object({
-	title: z.string().min(3).max(20),
-	artist: z.string().min(3).max(20),
-	link: z.string().min(3).max(20),
+	title: z.string().min(1).max(200),
+	artist: z.string().min(1).max(200),
+	link: z.string().min(1).max(200),
 });
 
 const validateNewSong = (req: Request, res: Response, next: NextFunction) => {
@@ -21,7 +21,7 @@ const validateNewSong = (req: Request, res: Response, next: NextFunction) => {
 }
 
 const commentSchema = z.object({
-	text: z.string().min(3).max(20),
+	text: z.string().min(1).max(200),
 });
 
 const validateComment = (req: Request, res: Response, next: NextFunction) => {

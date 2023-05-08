@@ -8,12 +8,9 @@ import { SongService } from '../song.service';
   template: `
     <h2>My Songs</h2>
     <ul>
-      <app-song-item
-        *ngFor="let song of songs | async"
-        [song]="song"
-      >
-
-      </app-song-item>
+      <li class="flex" *ngFor="let song of songs | async">
+        <app-song-item [song]="song"></app-song-item>
+      </li>
     </ul>
   `,
   styles: [

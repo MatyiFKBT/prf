@@ -1,0 +1,17 @@
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+.form-group {
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  width: 270px;
+  justify-content: space-between;
+}
+label {
+  /* vertical mid */
+  margin: auto 0;
+  margin-right: 0.5rem;
+}

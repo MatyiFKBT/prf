@@ -4,11 +4,10 @@ import { Song } from '../song';
 @Component({
   selector: 'app-song-item',
   template: `
-    <li>
+      {{ song.user.username }} -
       <a [routerLink]="['/songs', song._id]">
-        {{ song.user.username }} - {{ song.title }}
+        {{ song.title }}
       </a>
-    </li>
   `,
   styles: [
   ]

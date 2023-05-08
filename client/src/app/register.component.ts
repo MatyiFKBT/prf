@@ -8,16 +8,26 @@ import { NgForm } from '@angular/forms';
   template: `
     <h3>Register Form</h3>
 
-<div>
- <form #registerForm="ngForm" (ngSubmit)="onFormSubmit(registerForm)">
-   <p>username: <input type='text'  name='username' ngModel></p>
-   <p>password: <input type="password"  name="password" ngModel></p>
-   <p><button>Register</button></p>
- </form>
-</div>
+    <div>
+  <form #registerForm="ngForm" (ngSubmit)="onFormSubmit(registerForm)">
+  <div class="flex">
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type='text' placeholder="username..."  name='username' ngModel>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password"  placeholder="password..." name="password" ngModel>
+    </div>
+    <div class="form-group">
+      <button class="btn" type="submit">Submit</button>
+      </div>
+  </div>
+  </form>
+ </div>
   `,
-  styles: [
-  ]
+  styleUrls: ['../form.css']
 })
 export class RegisterComponent implements OnInit {
   invalidCredMsg: string;
@@ -36,7 +46,6 @@ export class RegisterComponent implements OnInit {
     this.activatedRoute.queryParamMap
       .subscribe(params => {
         this.retUrl = params.get('retUrl') as string;
-        console.log('LoginComponent/ngOnInit ' + this.retUrl);
       });
   }
   onFormSubmit(loginForm: NgForm) {

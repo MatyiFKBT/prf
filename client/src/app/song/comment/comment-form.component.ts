@@ -8,12 +8,13 @@ import { SongService } from 'src/app/song.service';
     <h3> Add a comment </h3>
     <form [formGroup]="commentForm" (ngSubmit)="onSubmit(commentForm.value)">
       <input type="text" placeholder="Comment..." formControlName="text" />
-      <button type="submit">Add</button>
+      <button class="btn" style="margin-left: 0.5rem;" type="submit">Add</button>
     </form>
 
   `,
-  styles: [
-  ]
+  styles: [`
+
+  ` ]
 })
 export class CommentFormComponent {
   commentForm;

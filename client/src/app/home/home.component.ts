@@ -3,8 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-home',
   template: `
-    <h1>Home</h1>
-    <p> Welcome to the Song-Lister App! </p>
+    <h2> Welcome to the Song-Lister App! </h2>
 
     <p>
       To get started, please <a routerLink="/register">register</a> or <a routerLink="/login">login</a>.
@@ -44,7 +43,6 @@ import { Component } from '@angular/core';
       <li> <strong>Express</strong> - backend framework </li>
       <li> <strong>Node.js</strong> - JavaScript runtime environment </li>
       <li> <strong>MongoDB</strong> - database </li>
-      <li> <strong>@angular/material</strong> - UI component library </li>
       <li><strong> TypeScript</strong> - programming language </li>
       <li><strong>HTML</strong> - markup language </li>
       <li><strong>CSS</strong> - styling </li>

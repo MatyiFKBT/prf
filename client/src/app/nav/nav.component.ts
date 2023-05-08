@@ -18,6 +18,10 @@ import { User } from '../user';
     <div class="nav-right">
       <ul *ngIf="isLoggedin; else loggedOut">
       <p>Logged in as {{user?.username}}</p>
+
+      <li *ngIf="user?.role === 'admin'">
+        <a routerLink="/admin">Admin</a>
+      </li>
       <li>
         <a routerLink="/me">My songs</a>
       </li>

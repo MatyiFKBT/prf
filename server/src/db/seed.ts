@@ -16,7 +16,7 @@ export async function seed() {
 				const newUser = new User(user);
 				return newUser.save();
 			})
-			const [admin,user1,user2] = await Promise.all(promises);
+			const [admin, user1, user2] = await Promise.all(promises);
 			console.log('[db]: Admin user created');
 		}
 		// check if there are any songs in the database
@@ -35,7 +35,7 @@ export async function seed() {
 			await newSong.save();
 			console.log('[db]: Song created');
 			const newComment = new Comment({
-				text: "yooooo",
+				text: "yooooo ez a kedvenc zeném",
 				user: admin?._id,
 				song: newSong?._id
 			});

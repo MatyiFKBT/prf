@@ -12,14 +12,24 @@ import { Subscription } from 'rxjs';
 
  <div>
   <form #loginForm="ngForm" (ngSubmit)="onFormSubmit(loginForm)">
-    <p>username: <input type='text'  name='username' ngModel></p>
-    <p>password: <input type="password"  name="password" ngModel></p>
-    <p><button type="submit">Submit</button></p>
+  <div class="flex">
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type='text' placeholder="username..."  name='username' ngModel>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password"  placeholder="password..." name="password" ngModel>
+    </div>
+    <div class="form-group">
+      <button class="btn" type="submit">Submit</button>
+      </div>
+  </div>
   </form>
  </div>
   `,
-  styles: [
-  ]
+  styleUrls: ['../form.css']
 })
 
 export class LoginComponent implements OnInit {
@@ -36,7 +46,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe((params:ParamMap) => {
+    this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
       this.redirect = params.get('redirect') || 'songs';
     });
     this.authSubscription = this.userService.isLoggedIn.subscribe(

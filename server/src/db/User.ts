@@ -31,8 +31,13 @@ userSchema.pre('save', async function (next) {
 	if (this.isModified('password')) {
 		this.password = await hash(this.password);
 	}
+	if (this.isModified('username')) {
+		this.username = this.username.toLowerCase();
+	}
+
 	next();
 });
+
 
 userSchema.methods.comparePassword = async function (password: string) {
 	return await verify(this.password, password);
