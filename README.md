@@ -1,5 +1,7 @@
 # PRF Beadandó projekt
 
+> Matolcsy Mátyás (KNDQJI)
+
 Az alkalmazás a következő címen érhető el: https://prf-production.up.railway.app/home
 
 Előre feltöltött felhasználók:
