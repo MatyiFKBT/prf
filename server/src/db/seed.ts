@@ -10,6 +10,10 @@ const users = [
 
 export async function seed() {
 	try {
+		await User.deleteMany({});
+		await Song.deleteMany({});
+		await Comment.deleteMany({});
+		console.log('[db]: collections cleared');
 		const [admin, user1, user2] = await Promise.all(users.map((user) => {
 			const newUser = new User(user);
 			return newUser.save();
